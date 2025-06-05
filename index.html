@@ -16,12 +16,34 @@
 			background-color: white;
 			background-image: url(duckl.png);
 		}
+		.winner{
+			width: 50rem;
+			height: 30rem;
+			margin-top: 5rem;
+			margin-left: auto;
+			margin-right: auto;
+			background-image: url(https://i.ytimg.com/vi/efAxxY39Zr0/maxresdefault.jpg);
+			background-size: 100% 100%;
+			display: none;
 
+		}
+		.looser{
+			width: 50rem;
+			height: 30rem;
+			margin-top: 5rem;
+			margin-left: auto;
+			margin-right: auto;
+			background-image: url(https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/4c37d9b3a2f90ab.png);
+			background-size: 100% 100%;
+			display: none;
+		}
 	</style>
 </head>
 <body>
+	<div class="winner"></div>
+	<div class="looser"></div>
 	<div class="content">
-		<h4 style="margin-left: 20px">Score: <span class="score">150</span></h4>
+		<h4 style="margin-left: 20px">Score: <span class="score"></span></h4>
 		<img src="dice.png" class="bt" style="width: 100px; margin-left: 20px">		
 		<div class="boxs firsBox" style="margin-left: 20px">
 			<h4>finish</h4>
@@ -81,17 +103,53 @@
 	let scoreBox = document.querySelector(".score")
 	let box = document.querySelectorAll(".boxs")
 	let btn = document.querySelector(".bt")
-	let score = 150
+	let score = 100
 	let shag = 0
+	scoreBox.innerHTML = score
 
 	btn.onclick = function(){
+		
 		box[shag].style.backgroundImage = "none"
 		x = (Math.random() * 6)
 		y = Math.round(x)
-		alert(y)
 		shag = shag + y
 		box[shag].style.backgroundImage = "url(duckl.png)"
-	}
+		alert("Иди на " + y + " на клетку " + shag)
+
+		if(shag == 3 || shag == 6 || shag == 9){
+			box[shag].style.backgroundImage = "none"
+			alert("Очко минус! Иди назад!")
+			shag = shag - 1
+			box[shag].style.backgroundImage = "url(duckl.png)"
+			score = score - 10
+			scoreBox.innerHTML = score
+		}
+
+		if(shag == 12){
+			box[shag].style.backgroundImage = "none"
+			shag = shag - 5
+			alert("Тюрьма! Иди назад на целых 5 клеток!")
+			box[shag].style.backgroundImage = "url(duckl.png)"
+			score = score - 50
+			scoreBox.innerHTML = score
+		}
+
+		if(shag > 31){
+			alert("Утка прошла игру! 🦆👑")
+			document.querySelector(".winner").style.display = "flex"
+			document.querySelector(".content").style.display = "none"
+		}
+
+		if(score == 0 || score < 0){
+			alert("Утка оказалась неудачлива. Ты проиграл")
+			document.querySelector(".looser").style.display = "flex"
+			document.querySelector(".content").style.display = "none"
+		}
+	}	
+		
+	
+
+
 </script>
 		
 </body>
