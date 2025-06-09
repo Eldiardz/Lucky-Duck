@@ -69,22 +69,26 @@
 		<div class="boxs" style="margin-left: 1340px; margin-top: 220px">14</div>	
 		<div class="boxs" style="margin-left: 1340px; margin-top: 330px">15</div>		
 
-		<div class="boxs" style="margin-left: 1340px; margin-top: 440px">16</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 440px ; background-color: red">16
+			<p>иди назад на -5 клеток</p>
+		</div>
 		<div class="boxs" style="margin-left: 1230px; margin-top: 440px">17</div>
 		<div class="boxs" style="margin-left: 1120px; margin-top: 440px">18</div>
-		<div class="boxs" style="margin-left: 1010px; margin-top: 440px">19</div>
+		<div class="boxs" style="margin-left: 1010px; margin-top: 440px ; background-color: red">19</div>
 
 		<div class="boxs" style="margin-left: 900px; margin-top: 440px">20</div>
 		<div class="boxs" style="margin-left: 790px; margin-top: 440px">21</div>
 		<div class="boxs" style="margin-left: 680px; margin-top: 440px">22</div>
-		<div class="boxs" style="margin-left: 570px; margin-top: 440px">23</div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 440px; background-color: red">23</div>
 
 		<div class="boxs" style="margin-left: 460px; margin-top: 440px">24</div>
 		<div class="boxs" style="margin-left: 350px; margin-top: 440px">25</div>
-		<div class="boxs" style="margin-left: 240px; margin-top: 440px">26</div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 440px ; background-color: red">26</div>
 		<div class="boxs" style="margin-left: 130px; margin-top: 440px">27</div>
 
-		<div class="boxs" style="margin-left: 20px; margin-top: 440px">28</div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 440px ; background-color: red">28
+			<p>иди назад на -5 клеток</p>
+		</div>
 		<div class="boxs" style="margin-left: 20px; margin-top: 330px">29</div>
 		<div class="boxs" style="margin-left: 20px; margin-top: 220px">30</div>	
 		<div class="boxs" style="margin-left: 20px; margin-top: 110px">31</div>		
@@ -103,7 +107,7 @@
 	let scoreBox = document.querySelector(".score")
 	let box = document.querySelectorAll(".boxs")
 	let btn = document.querySelector(".bt")
-	let score = 100
+	let score = 150
 	let shag = 0
 	scoreBox.innerHTML = score
 
@@ -116,7 +120,7 @@
 		box[shag].style.backgroundImage = "url(duckl.png)"
 		alert("Иди на " + y + " на клетку " + shag)
 
-		if(shag == 3 || shag == 6 || shag == 9){
+		if(shag == 3 || shag == 6 || shag == 9 || shag == 19 || shag == 23 || shag == 26){
 			box[shag].style.backgroundImage = "none"
 			alert("Очко минус! Иди назад!")
 			shag = shag - 1
@@ -125,7 +129,7 @@
 			scoreBox.innerHTML = score
 		}
 
-		if(shag == 12){
+		if(shag == 12 || shag == 16 || shag == 28){
 			box[shag].style.backgroundImage = "none"
 			shag = shag - 5
 			alert("Тюрьма! Иди назад на целых 5 клеток!")
@@ -146,10 +150,6 @@
 			document.querySelector(".content").style.display = "none"
 		}
 	}	
-		
-	
-
-
 </script>
 		
 </body>
